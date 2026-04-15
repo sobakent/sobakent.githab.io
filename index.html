@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СобаКЕНТ — утяжелитель-друг для детей</title>
+  <!-- Google Fonts: Inter (без засечек) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #1E1E1E;
+      line-height: 1.45;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Цвета */
+    :root {
+      --orange: #FF6B35;
+      --blue: #2B5C8F;
+      --light-bg: #F8FAFC;
+      --border-light: #E9EEF4;
+    }
+
+    /* Типографика */
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.15;
+      color: #0A1927;
+    }
+
+    h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: #0A1927;
+    }
+
+    .section-subhead {
+      font-size: 20px;
+      color: #475569;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-block;
+      background-color: var(--orange);
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 14px 34px;
+      border-radius: 40px; /* мягче */
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s;
+      box-shadow: 0 10px 20px -5px rgba(255, 107, 53, 0.25);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn:hover {
+      background-color: #E55A2A;
+    }
+
+    .btn-outline-light {
+      background: white;
+      color: var(--blue);
+      box-shadow: none;
+      font-weight: 600;
+    }
+    .btn-outline-light:hover {
+      background: #f0f4fa;
+    }
+
+    /* Шапка */
+    .header {
+      padding: 20px 0;
+      background: white;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: var(--orange);
+      font-size: 32px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* Главный экран */
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 22px;
+      color: #334155;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      background: #F2F7FC;
+      border-radius: 48px;
+      padding: 30px 20px 20px;
+      text-align: center;
+      box-shadow: 0 25px 40px -15px rgba(43,92,143,0.1);
+    }
+
+    .hero-image i {
+      font-size: 200px;
+      color: #D18E5E;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.05));
+    }
+
+    /* Проблема — только описание без критики */
+    .problem {
+      padding: 80px 0;
+      background: var(--light-bg);
+      border-radius: 48px 48px 0 0;
+    }
+
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 32px 24px;
+      border-radius: 28px;
+      border: 1px solid var(--border-light);
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+    }
+
+    .stat-number {
+      font-size: 56px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0A1927;
+    }
+
+    .stat-desc {
+      color: #64748B;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    /* Как работает */
+    .how {
+      padding: 80px 0;
+    }
+
+    .cards-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 30px 18px;
+      border-radius: 28px;
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 46px;
+      color: var(--orange);
+      margin-bottom: 24px;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: var(--blue);
+    }
+
+    /* Почему СобаКЕНТ — список преимуществ */
+    .why {
+      padding: 70px 0;
+      background: white;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 40px;
+      max-width: 900px;
+      margin: 40px auto 0;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .benefit-item i {
+      color: var(--orange);
+      font-size: 28px;
+      width: 36px;
+      text-align: center;
+    }
+
+    /* Прототип галерея */
+    .prototype {
+      padding: 60px 0;
+      background: #FCFDFE;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .gallery-item {
+      background: #F1F6FC;
+      border-radius: 36px;
+      padding: 28px 16px 20px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+    }
+
+    .gallery-visual {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #E1E9F2;
+      border-radius: 28px;
+      margin-bottom: 20px;
+      font-size: 70px;
+      color: #2B5C8F;
+    }
+
+    .gallery-label {
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    /* Для центров */
+    .centers {
+      padding: 70px 0;
+      background: var(--blue);
+      color: white;
+      border-radius: 48px 48px 0 0;
+    }
+
+    .centers .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .centers h2 {
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .centers p {
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .centers .btn {
+      background: white;
+      color: var(--blue);
+      box-shadow: none;
+      font-size: 20px;
+      padding: 16px 42px;
+    }
+
+    /* Форма */
+    .preorder {
+      padding: 80px 0;
+    }
+
+    .form-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--light-bg);
+      padding: 48px 48px;
+      border-radius: 48px;
+      border: 1px solid var(--border-light);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 18px 22px;
+      font-size: 18px;
+      border: 1px solid #CBD5E1;
+      border-radius: 40px;
+      font-family: 'Inter', sans-serif;
+      background: white;
+    }
+
+    .form-group input:focus {
+      outline: 2px solid var(--orange);
+      border-color: transparent;
+    }
+
+    .form-card .btn {
+      width: 100%;
+      padding: 18px;
+      font-size: 20px;
+    }
+
+    /* Футер */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .footer-contacts {
+      display: flex;
+      gap: 32px;
+      color: #334155;
+    }
+
+    .footer-contacts i {
+      margin-right: 8px;
+      color: var(--orange);
+    }
+
+    .footer-quote {
+      font-size: 18px;
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 900px) {
+      .hero-grid, .cards-3, .cards-4, .gallery, .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .container { padding: 0 20px; }
+      h1 { font-size: 40px; }
+      .header .container { flex-direction: column; gap: 16px; }
+      .nav { flex-wrap: wrap; justify-content: center; }
+      .footer-grid { flex-direction: column; gap: 20px; text-align: center; }
+      .centers .container { flex-direction: column; text-align: center; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 1. Шапка -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-paw"></i> СобаКЕНТ
+    </div>
+    <nav class="nav">
+      <a href="#">Проблема</a>
+      <a href="#">Как работает</a>
+      <a href="#">Почему мы</a>
+      <a href="#">Предзаказ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 2. Главный экран -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>СобаКЕНТ — игрушка-утяжелитель для детей с СДВГ</h1>
+        <p class="hero-sub">Помогает успокаиваться и концентрироваться. Без слёз и уговоров</p>
+        <div class="price">3 500 ₽</div>
+        <a href="#" class="btn">Предзаказать <i class="fas fa-arrow-right" style="margin-left: 12px;"></i></a>
+      </div>
+      <div class="hero-image">
+        <!-- иконка собаки как фото игрушки на белом фоне -->
+        <i class="fas fa-dog"></i>
+        <div style="font-weight: 500; margin-top: 12px; color: var(--blue); font-size: 18px;">мягкий друг с утяжелением</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Проблема (факты, без критики) -->
+  <section class="problem">
+    <div class="container">
+      <h2 style="text-align: center;">Почему нужен особый подход</h2>
+      <div class="cards-3">
+        <div class="stat-card">
+          <div class="stat-number">90%</div>
+          <div class="stat-label">детей не нравятся существующие утяжелители</div>
+          <div class="stat-desc">по опросам родителей</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">отказываются их носить</div>
+          <div class="stat-desc">дискомфорт или неприятие</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4–14 тыс ₽</div>
+          <div class="stat-label">цена альтернатив</div>
+          <div class="stat-desc">при этом дети их не любят</div>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 40px; font-size: 20px; color: var(--blue); font-weight: 500;">СобаКЕНТ создан, чтобы ребёнок сам хотел его носить.</p>
+    </div>
+  </section>
+
+  <!-- 4. Как работает -->
+  <section class="how">
+    <div class="container">
+      <h2 style="text-align: center;">Как это работает</h2>
+      <div class="cards-4">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+          <div class="feature-title">Надевается на плечи</div>
+          <div>Как объятие друга, а не сковывающая одежда</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-weight-hanging"></i></div>
+          <div class="feature-title">Вес 1–2 кг</div>
+          <div>Глубокая проприоцептивная стимуляция</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+          <div class="feature-title">Гипоаллергенные материалы</div>
+          <div>Мягкая вискоза, никакой колючести</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="feature-title">Не спадает</div>
+          <div>Плотно держится под собственным весом</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Почему СобаКЕНТ (список преимуществ) -->
+  <section class="why">
+    <div class="container">
+      <h2 style="text-align: center;">Почему СобаКЕНТ — выбор детей и родителей</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item"><i class="fas fa-heart"></i> Ребёнок носит сам — без уговоров</div>
+        <div class="benefit-item"><i class="fas fa-cloud"></i> Мягкий и безопасный</div>
+        <div class="benefit-item"><i class="fas fa-school"></i> Можно носить в школе и дома</div>
+        <div class="benefit-item"><i class="fas fa-running"></i> Не спадает при движении</div>
+        <div class="benefit-item"><i class="fas fa-paint-brush"></i> Дети участвуют в выборе дизайна</div>
+        <div class="benefit-item"><i class="fas fa-smile"></i> Терапия в формате игры</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Прототип: галерея -->
+  <section class="prototype">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 40px;">СобаКЕНТ в жизни</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <div class="gallery-visual">
+            <i class="fas fa-dog" style="font-size: 100px; color: #BD7A4A;"></i>
+          </div>
+          <div class="gallery-label">🐕 игрушка-собака</div>
+          <div style="color: #64748B;">фото</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-visual">
+            <i class="fas fa-child" style="font-size: 100px; color: #2B5C8F;"></i>
+            <i class="fas fa-dog" style="font-size: 65px; color: #BD7A4A; margin-left: -12px;"></i>
+          </div>
+          <div class="gallery-label">👧 ребёнок с игрушкой</div>
+          <div style="color: #64748B;">фото</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-visual" style="background: #D9E3EC;">
+            <i class="fas fa-play-circle" style="font-size: 75px; color: var(--blue);"></i>
+          </div>
+          <div class="gallery-label">🎬 видео 15 секунд</div>
+          <div style="color: #64748B;">моменты спокойствия</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Для центров и специалистов -->
+  <section class="centers">
+    <div class="container">
+      <div>
+        <h2>Для центров и специалистов</h2>
+        <p>Оптовые закупки, сертификаты, консультации</p>
+      </div>
+      <a href="#" class="btn btn-outline-light">Связаться с нами <i class="fas fa-envelope" style="margin-left: 10px;"></i></a>
+    </div>
+  </section>
+
+  <!-- 8. Форма предзаказа -->
+  <section class="preorder">
+    <div class="container">
+      <div class="form-card">
+        <h2 style="text-align: center; margin-bottom: 24px;">Оформить предзаказ</h2>
+        <div class="form-group">
+          <input type="text" placeholder="Имя" value="">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" value="">
+        </div>
+        <div class="form-group">
+          <input type="tel" placeholder="Телефон" value="">
+        </div>
+        <button class="btn">Отправить <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+        <p style="margin-top: 18px; font-size: 15px; color: #64748B; text-align: center;">Ответим в течение дня</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 9. Футер -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-logo">
+      <i class="fas fa-paw"></i> СобаКЕНТ
+    </div>
+    <div class="footer-contacts">
+      <span><i class="far fa-envelope"></i> hello@sobakent.ru</span>
+      <span><i class="fab fa-telegram-plane"></i> @sobakent</span>
+    </div>
+    <div class="footer-quote">
+      «Мы делаем терапию, которую ребёнок выбирает сам»
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    console.log('🐕 СобаКЕНТ — утяжелитель, который любят дети');
+    document.querySelectorAll('.btn, .nav a').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if(btn.getAttribute('href') === '#') e.preventDefault();
+      });
+    });
+  })();
+</script>
+</body>
+</html>
